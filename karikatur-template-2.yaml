@@ -42,7 +42,7 @@ Resources:
             yum install git -y
             git clone https://github.com/fevzibayrak/cartoon-karikatur.git
             systemctl restart httpd
-            systemctl enable httpd /var/www/html/static-web/index.html
+            systemctl enable httpd /var/www/html/cartoon-karikatur/static-web/index.html
 Outputs:
   WebsiteURL:
     Value: !Sub 
