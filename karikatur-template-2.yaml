@@ -40,9 +40,9 @@ Resources:
             chmod 777 /var/www/html
             cd /var/www/html
             yum install git -y
-            git clone https://github.com/fevzibayrak/cartoon-karikatur/tree/main/static-web
+            git clone https://github.com/fevzibayrak/cartoon-karikatur.git
             systemctl restart httpd
-            systemctl enable httpd /var/www/html/index.html
+            systemctl enable httpd /var/www/html/static-web/index.html
 Outputs:
   WebsiteURL:
     Value: !Sub 
