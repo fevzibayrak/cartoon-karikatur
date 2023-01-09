@@ -37,7 +37,7 @@ Resources:
             yum update -y
             yum install httpd -y
             cd /var/www/html
-            FOLDER="https://github.com/fevzibayrak/cartoon-snapshot/tree/main/static-web/"
+            FOLDER="https://github.com/fevzibayrak/cartoon-karikatur/tree/main/static-web/"
             wget ${FOLDER}index.html
             wget ${FOLDER}kar1.jpg
             wget ${FOLDER}kar2.jpg
