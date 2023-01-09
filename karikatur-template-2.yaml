@@ -34,18 +34,13 @@ Resources:
         Fn::Base64: 
           |
             #! /bin/bash
-            yum update -y
-            yum install -y httpd
-            systemctl start httpd
-            chmod 777 /var/www/html
+            sudo yum update -y
+            sudo yum install -y httpd
+            sudo systemctl start httpd
+            sudo chmod 777 /var/www/html
             cd /var/www/html
-            yum install git -y
-            git clone https://github.com/fevzibayrak/cartoon-karikatur.git
-            systemctl restart httpd
-            systemctl enable httpd /var/www/html/cartoon-karikatur/static-web/index.html
-Outputs:
-  WebsiteURL:
-    Value: !Sub 
-      - http://${PublicAddress}
-      - PublicAddress: !GetAtt WebServerHost.PublicDnsName
-    Description: Kittens Carousel Application URL
+            sudo yum install git -y
+            sudo git clone https://github.com/fevzibayrak/cartoon-karikatur.git
+            sudo systemctl restart httpd
+            sudo systemctl enable httpd /var/www/html/cartoon-karikatur/static-web/index.html
+
