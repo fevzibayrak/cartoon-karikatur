@@ -40,7 +40,7 @@ Resources:
             chmod 777 /var/www/html
             cd /var/www/html
             yum install git -y
-            git clone https://github.com/fevzibayrak/cartoon-karikatur.git
+            git clone https://github.com/fevzibayrak/cartoon-karikatur/tree/main/static-web
             systemctl restart httpd
             systemctl enable httpd /var/www/html/index.html
 Outputs:
