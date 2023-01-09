@@ -42,11 +42,11 @@ Resources:
             wget ${FOLDER}kar1.jpg
             wget ${FOLDER}kar2.jpg
             wget ${FOLDER}kar3.jpg
-            wget ${FOLDER}kar4.png
+            wget ${FOLDER}kar4.jpg
             wget ${FOLDER}kar5.jpg
             wget ${FOLDER}kar6.jpg
             wget ${FOLDER}kar7.jpg
-            wget ${FOLDER}kar8.png
+            wget ${FOLDER}kar8.jpg
             wget ${FOLDER}kar9.jpg
             wget ${FOLDER}kar10.jpg
             systemctl start httpd
