@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  This site made for sv.
+  
+Resources:
+  WebServerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable HTTP for Apache Web Server and SSH for secure connection.
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  WebServerHost:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0b5eea76982371e91
+      InstanceType: t2.micro
+      KeyName: first-key
+      SecurityGroupIds:
+        - !Ref WebServerSecurityGroup
+      Tags:
+        - Key: Name
+          Value: !Sub Web Server of ${AWS::StackName} Stack
+      UserData: 
+        Fn::Base64:
+          !Sub |
+            #! /bin/bash
+            yum update -y
+            yum install httpd -y
+            cd /var/www/html
+            FOLDER="https://raw.githubusercontent.com/fevzibayrak/cartoon-karikatur/main/static-sv"
+            wget $FOLDER/index.html
+            wget $FOLDER/dg-1.jpg
+            wget $FOLDER/dg-2.jpg
+            wget $FOLDER/dg-3.jpg
+            wget $FOLDER/dg-4.jpg
+            wget $FOLDER/dg-5.jpg
+            wget $FOLDER/dg-6.jpg
+            wget $FOLDER/dg-7.jpg
+            wget $FOLDER/dg-8.jpg
+            wget $FOLDER/dg-9.jpg
+            wget $FOLDER/dg-10.jpg
+            systemctl start httpd
+            systemctl enable httpd      
+  
+Outputs:
+  WebsiteURL:
+    Value: !Sub
+      - http://${PublicAddress}
+      - PublicAddress: !GetAtt WebServerHost.PublicDnsName
+    Description: Kittens Carousel Application URL
